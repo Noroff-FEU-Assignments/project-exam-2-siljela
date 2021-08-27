@@ -1,0 +1,12 @@
+:root {
+  --colour-primary: #8c4242;
+  --colour-secondary: #bf6969;
+  --colour-tertiary: #d9a282;
+  --colour-background: #e4ddd3;
+  --colour-beige: #d9c7b8;
+  --colour-brown: #9c766d;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
