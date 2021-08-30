@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from "./Title.module.css"
+import styles from "./Heading.module.css"
 
-function Title(props) {
+function Heading(props) {
     return <h1 className={styles.headline}>{props.content}</h1>;
 }
 
-export default Title
+export default Heading

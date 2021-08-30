@@ -1,26 +1,25 @@
 import React from 'react'
-import FooterLinks from './FooterLinks';
-import SoMe from './SoMe';
-import Text from '../../objects/Text';
+import SoMe from '../items/SoMe';
+import Text from '../items/Text';
 
 function FooterContent() {
     return (
         <div>
-            <FooterLinks>
+            <ul>
                 <li><a href="url">link</a></li>
                 <li><a href="url">link</a></li>
-            </FooterLinks>
-            <FooterLinks>
-                <li><a href="url">link</a></li>
-                <li><a href="url">link</a></li>
-                <li><a href="url">link</a></li>
-                <li><a href="url">link</a></li>
-            </FooterLinks>
-            <FooterLinks>
+            </ul>
+            <ul>
                 <li><a href="url">link</a></li>
                 <li><a href="url">link</a></li>
                 <li><a href="url">link</a></li>
-            </FooterLinks>
+                <li><a href="url">link</a></li>
+            </ul>
+            <ul>
+                <li><a href="url">link</a></li>
+                <li><a href="url">link</a></li>
+                <li><a href="url">link</a></li>
+            </ul>
             <SoMe />
             <Text content="copyright" />
         </div>

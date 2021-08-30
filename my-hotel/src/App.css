@@ -10,3 +10,12 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+main {
+  min-height: calc(100vh - 500px);
+  margin-top: auto;
+}
+
+img {
+  max-width: 100px;
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./HeadingContent.module.css"
+import styles from "./HeaderContainer.module.css"
 
-function HeadingContent (props) {
+function HeaderContainer (props) {
     return (
         <div className={styles.header}>
             {props.children}
@@ -10,4 +10,4 @@ function HeadingContent (props) {
         );
 }
 
-export default HeadingContent; 
+export default HeaderContainer; 
