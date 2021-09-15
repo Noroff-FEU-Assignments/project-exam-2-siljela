@@ -9,13 +9,17 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  background-image: url("./images/gondola.jpeg");
+  background-size: 310%;
+  background-position: top;
 }
 
 main {
-  min-height: calc(100vh - 500px);
+  min-height: calc(100vh - 474px);
   margin-top: auto;
 }
-
-img {
-  max-width: 100px;
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: none;
 }

@@ -1,5 +1,3 @@
-// import Navbar from "react-bootstrap/Navbar";
-// import Nav from "react-bootstrap/Nav";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -8,42 +6,45 @@ import Book from "../book/Book";
 import Contact from "../contact/Contact";
 import Browse from "../browse/Browse";
 import Admin from "../admin/Admin";
+import Hotel from "../../components/browse/hotels/Hotel";
 import logo from "../../images/logo.png";
+import styles from "./Navigation.module.css";
 
-function Layout() {
+function Navigation() {
+	
 	return (
 		<Router>
-			<Navbar expand="lg">
-				<NavLink to="/" exact>
-					<Navbar.Brand><img src={logo} alt="logo"/></Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg">
+                <Container>
+				<NavLink to="/" exact >
+					<Navbar.Brand><img src={logo} alt="logo" className={styles.logo}/></Navbar.Brand>
 				</NavLink>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mr-auto">
-						<NavLink to="/" exact className="nav-link">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className={styles.resNavbar}/>
+				<Navbar.Collapse id="responsive-navbar-nav" className="resNavbar">
+					<Nav className="me-auto">
+						<Nav.Link href="/" exact className="nav-link">
 							Home
-						</NavLink>
-                        <NavLink to="/book" className="nav-link">
-							Book
-						</NavLink>
-						<NavLink to="/contact" className="nav-link">
+						</Nav.Link>
+                        <Nav.Link href="/browse" className="nav-link">
+							Browse Properties
+						</Nav.Link>
+						<Nav.Link href="/contact" className="nav-link">
 							Contact
-						</NavLink>
+						</Nav.Link>
 					</Nav>
                     <Nav>
-                        <NavLink to="/browse" className="nav-link">Browse Properties</NavLink>
-
-                        <NavDropdown title="Social Media" id="basic-nav-dropdown">
+                        <Nav.Link href="/book" className="nav-link">Book</Nav.Link>
+                        <NavDropdown title="Social Media" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="link">Facebook &rsaquo; </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="link">Instagram &rsaquo;</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="link">Youtube &rsaquo;</NavDropdown.Item>
                         </NavDropdown>
-
-                        <NavLink to="/admin" className="nav-link">Admin</NavLink>
+                        <Nav.Link href="/admin" className="nav-link">Admin</Nav.Link>
                     </Nav>
 				</Navbar.Collapse>
+            </Container>
 			</Navbar>
 			<Container>
 				<Switch>
@@ -51,7 +52,7 @@ function Layout() {
                     <Route path="/book" exact component={Book} />
 					<Route path="/contact" component={Contact} />
                     <Route path="/browse" component={Browse} />
-                    
+                    <Route path="/hotel" component={Hotel} />
                     <Route path="/admin" component={Admin} />
 				</Switch>
 			</Container>
@@ -59,4 +60,4 @@ function Layout() {
 	);
 }
 
-export default Layout;
+export default Navigation;

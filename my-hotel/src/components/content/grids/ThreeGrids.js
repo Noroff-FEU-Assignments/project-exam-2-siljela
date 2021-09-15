@@ -2,7 +2,7 @@ import React from 'react';
 import IconItem from './IconItem';
 import styles from "./ThreeGrids.module.css"
 
-function threeGrids() {
+function ThreeGrids() {
     return (
         <div className={styles.module}>
             <IconItem url="test" description="test" />
@@ -12,4 +12,4 @@ function threeGrids() {
     )
 }
 
-export default threeGrids
+export default ThreeGrids

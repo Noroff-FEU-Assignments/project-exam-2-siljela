@@ -1,3 +1,6 @@
 .headline {
   color: var(--colour-primary);
+  /* margin: 50% 20%; */
+  text-transform: uppercase;
+  color: white;
 }

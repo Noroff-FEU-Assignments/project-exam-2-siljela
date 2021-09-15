@@ -1,0 +1,9 @@
+.FooterLink {
+  list-style-type: none;
+}
+.FooterLink > a {
+  color: white;
+}
+.FooterLink:hover {
+  text-decoration: underline;
+}

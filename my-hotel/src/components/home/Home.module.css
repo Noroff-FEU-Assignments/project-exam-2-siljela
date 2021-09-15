@@ -1,0 +1,62 @@
+.home {
+  margin: 50% 20%;
+}
+h1 {
+  font-size: 24px;
+}
+.imageContainer {
+  display: inline-block;
+  height: 0;
+  padding-bottom: 50%;
+  max-width: 50%;
+  text-align: center;
+  opacity: 0.9;
+  background-size: cover;
+}
+.imageContainer > a {
+  color: white;
+  position: relative;
+  top: 85px;
+}
+.imageContainer:hover {
+  opacity: 1;
+}
+.village {
+  background-image: url("../../images/town.jpeg");
+}
+.mountain {
+  background-image: url("../../images/view.jpeg");
+}
+.beach {
+  background-image: url("../../images/beach.jpeg");
+}
+.tram {
+  background-image: url("../../images/tram-2.jpeg");
+}
+.mallorca {
+  background-image: url("../../images/apartment-building.jpeg");
+  background-size: 300%;
+  padding: 80px 60px;
+}
+.mallorcaText {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  color: black;
+  opacity: 0.9;
+}
+.mallorcaText:hover {
+  color: black;
+  opacity: 1;
+  text-decoration: none;
+}
+.iconSection {
+  background: white;
+}
+.iconContainer {
+  margin: 50px 0;
+}
+.holidaze {
+  font-family: "Dancing Script", cursive;
+  text-transform: lowercase;
+  font-size: 72px;
+}

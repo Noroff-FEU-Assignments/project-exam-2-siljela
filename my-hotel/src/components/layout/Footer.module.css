@@ -1,0 +1,11 @@
+.footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  padding: 50px;
+}
+ul {
+  padding: 0;
+}

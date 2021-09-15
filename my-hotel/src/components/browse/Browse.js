@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import HotelList from './hotels/HotelList';
 
 function Browse() {
     return (
-        <div>
-            
-        </div>
+        <>
+            <HotelList />
+        </>
     )
 }
 
