@@ -1,64 +1,93 @@
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import axios from "axios";
+import { URL } from "../../constants/api";
+import AuthContext from "../context/AuthContext";
 
-// import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
-// import { Auth } from "./Auth";
+const AUTH = "auth/local";
+const url = URL + AUTH;
 
+const schema = yup.object().shape({
+  username: yup
+    .string()
+    .required("Enter your username")
+    .min(3, "Enter a valid username"),
+  password: yup
+    .string()
+    .required("Enter your password")
+    .min(8, "Your password must be at least 8 characters"),
+});
 
+  export const LogIn = () => {
 
-function Login() {
-    const { handleSubmit } = useForm();
-    const history = useHistory();
-    const [passwordShown, shownPassword] = useState(false);
-    // const { registerUser } = useContext(Auth);
-    const adminPassword = "admin123";
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  
+  const [submitting, setSubmitting] = useState(false);
+  const [loginError, setLoginError] = useState(null);
+  const history = useHistory();
+  const [auth, setAuth] = useContext(AuthContext);
+  console.log(auth);
 
-    const passwordVisiblity = () => {
-        shownPassword(passwordShown ? false : true);
+  async function onSubmit(data) {
+
+    setSubmitting(true);
+    setLoginError(false);
+    const body = {
+      identifier: data.username,
+      password: data.password,
     };
 
-    function onSubmit(data) { 
-        console.log("data", data); 
-        localStorage.setItem("user", data.name);
-        let loginInput = data.loginPassword;
-
-        function strCompare(loginInput, adminPassword){
-            return loginInput === adminPassword;
-        }
-        if(strCompare(loginInput, adminPassword) === true) {
-            alert('Hello ' + data.name);
-            // registerUser(data.name);
-            history.push("/admin/dashboard");
-        }
-        if(strCompare(loginInput, adminPassword) === false) {
-            alert("The password is incorrect. Try again.");
-        }
-        console.log(strCompare(loginInput, adminPassword));
+    try {
+      const response = await axios.post(url, body);
+      console.log(response, response.data);
+      setAuth(response.data);
+      history.push("/admin");
+    } catch (error) {
+      setLoginError(error.toString());
+    } finally {
+      setSubmitting(false);
     }
+  }
 
-    return (
-        <div className="login">
-            <Helmet><title>Log In | Holidaze</title></Helmet>
-            {/* <div className="login__dark">
-                <h3>Don't have an Account?</h3>
-                <p>Click the button below to register a admin account.</p>
-                <Link to={"/register"}><button title="Click to register" className="btn-blue">Register</button></Link> 
-            </div> */}
-            <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <h3>Login</h3>
-                    <p title="Log in below">Log in below</p>
-                    <input title="Fill in your name" name="name" type="name" placeholder="name" required/>
-                    <input title="Fill in your password" name="loginPassword" type={passwordShown ? "text" : "password"} placeholder="password" pattern=".{4,}" required/>
-                    <i onClick={passwordVisiblity} class={passwordShown ? "fas fa-eye" : "fas fa-eye-slash"}></i>
-                    <button title="Log in" className="btn-blue">Log in</button>
-                    {/* <Link to={"/register"}><button title="Click to register" className="register-btn btn-blue">Register</button></Link>  */}
-                </form>
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <form
+        id="contactForm"
+        onSubmit={handleSubmit(onSubmit)}>
+        <h2>Title</h2>
+        <p>{loginError}</p>
+        <fieldset disabled={submitting} style={{ border: "none" }}>
+          <div>
+            <label>Username</label>
+            <input
+              type="text"
+              {...register("username")}
+              placeholder="Enter your username."
+            />
+            {errors.username && <span>{errors.username.message}</span>}
+          </div>
+          <div className="form-control">
+            <label>Password</label>
+            <input
+              type="password"
+              {...register("password")}
+              placeholder="Enter your password."
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
 
-export default Login;
+          <button>{submitting ? "logging in" : "Login"}</button>
+        </fieldset>
+      </form>
+    </div>
+  );
+};

@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import { URL } from "../../constants/api";
-import { PropertyCard } from "./PropertyCard";
+import { HotelCard } from "./PropertyCard";
 
 export const Browse = () => {
-	const [properties, setProperties] = useState([]);
+	const [hotels, setHotels] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const [filteredProperties, setFilteredProperties] = useState([]);
+	const [filteredHotels, setFilteredHotels] = useState([]);
 
 	useEffect(function () {
-		const propertyData = `${URL}hotels`;
+		const hotelData = `${URL}hotels`;
 		async function fetchData() {
 			try {
-				const response = await fetch(propertyData);
+				const response = await fetch(hotelData);
 
 				if (response.ok) {
 					const json = await response.json();
                     
-					setProperties(json);
-					setFilteredProperties(json);
-
+					setHotels(json);
+					setFilteredHotels(json);
 				} else {
 					setError("An error occured");
 				}
@@ -33,11 +32,11 @@ export const Browse = () => {
 	}, []);
 
 	if (loading) {
-		return <div>Properties are loading.</div>;
+		return <div>Loading...</div>;
 	}
 
 	if (error) {
-		return <div>Unfortunately, we were unable to load the properties.</div>;
+		return <div>ERROR: An error occured</div>;
 	}
 
 	const handleClick = () => {
@@ -47,29 +46,29 @@ export const Browse = () => {
 
 	const handleData = (event) => {
 	const inputValue = event.target.value.trim().toLowerCase();
-	const filtered = properties.filter((property) =>
-        property.name.toLowerCase().includes(inputValue)
+	const filtered = hotels.filter((hotel) =>
+		hotel.name.toLowerCase().includes(inputValue)
 	);
-	setFilteredProperties(filtered);
+	setFilteredHotels(filtered);
 	};
 
 return (
     <div>
       <header>
         <div>
-          <h1>Properties</h1>
+          <h1>Hotels</h1>
         </div>
         <div>
-          <p>Search for properties</p>
+          <p>Search for hotels</p>
           <input
             type="text"
             onChange={(e) => handleData(e)}
-            placeholder="Search property name here.."
+            placeholder="Search by hotel name ..."
           />
         </div>
       </header>
       <div>
-        {filteredProperties.map((property) => {
+        {filteredHotels.map((hotel) => {
           let {
 			img_url,
 			name,
@@ -77,13 +76,13 @@ return (
 			description,
 			price,
 			id,
-          } = property;
-        //   if (property.img_url === null) {
-        //     img_url =
-        //       "https://res.cloudinary.com/hb5n5nkav/image/upload/v1621779159/placeholder_ibkqxi.png";
-        //   }
+          } = hotel;
+          if (hotel.img_url === null) {
+            img_url =
+              "https://res.cloudinary.com/hb5n5nkav/image/upload/v1621779159/placeholder_ibkqxi.png";
+          }
           return (
-            <PropertyCard
+            <HotelCard
               key={id}
               id={id}
               img_url={img_url}
@@ -92,7 +91,7 @@ return (
               description={description}
               price={price}
               onClick={() => handleClick()}
-              buttonLink={`/properties/?id=${property.id}`}
+              buttonLink={`/book/?id=${hotel.id}`}
             />
           );
         })}

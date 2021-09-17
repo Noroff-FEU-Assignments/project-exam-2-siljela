@@ -9,7 +9,7 @@ import airballoon from "../../images/airballoon.png"
 import parasol from "../../images/parasoll.png"
 
 
-function Home() {
+export const Home = () => {
     return (
         <>
             <main>
@@ -29,7 +29,7 @@ function Home() {
                     <Col sm className={`${styles.mountain} ${styles.imageContainer}`}><a href="test">City-stay in Portugal &rsaquo;</a></Col>
                 </Row>
                 <Row className={`${"text-center"} ${styles.mallorca}`}>
-                    <a href="/browse" class={styles.mallorcaText}>
+                    <a href="/browse" className={styles.mallorcaText}>
                         <h2>Book an apartment in Mallorca &rsaquo;</h2>
                         <p>Experience the sun, the beach and the atmosphere of Mallorca.</p>
                     </a>
@@ -38,5 +38,3 @@ function Home() {
         </>
     )
 }
-
-export default Home
