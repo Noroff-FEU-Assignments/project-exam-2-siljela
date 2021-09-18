@@ -12,7 +12,7 @@ import { EditProperties } from "./EditProperties";
   const [showEditPropertiesPanel, setsshowEditPropertiesPanel] = useState(false);
   const history = useHistory();
 
-  //   return <>{auth ? <h1>Welcome to dashboard</h1> : history.push("/signin")}</>;
+    // return <>{auth ? <h1>Welcome to the admin-dashboard</h1> : history.push("/signin")}</>;
 
   if (!auth) {
     history.push("/login");

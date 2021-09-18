@@ -9,7 +9,7 @@ export const Browse = () => {
 	const [filteredHotels, setFilteredHotels] = useState([]);
 
 	useEffect(function () {
-		const hotelData = `${URL}hotels`;
+		const hotelData = `${URL}properties`;
 		async function fetchData() {
 			try {
 				const response = await fetch(hotelData);
@@ -91,7 +91,7 @@ return (
               description={description}
               price={price}
               onClick={() => handleClick()}
-              buttonLink={`/book/?id=${hotel.id}`}
+              buttonLink={`/properties/?id=${hotel.id}`}
             />
           );
         })}

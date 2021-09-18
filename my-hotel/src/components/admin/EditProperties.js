@@ -12,7 +12,7 @@ export const EditProperties = () => {
   const [displayAddProperty, setdisplayAddProperty] = useState(false);
 
   useEffect(() => {
-    const propertiesURL = `${URL}hotels`;
+    const propertiesURL = `${URL}properties`;
     async function getProperties() {
       try {
         const response = await fetch(propertiesURL);
@@ -87,7 +87,7 @@ export const EditProperties = () => {
               description={description}
               price={price}
               onClick={() => handleClick()}
-              buttonLink={`property/${id}`}
+              buttonLink={`properties/${id}`}
             />
           );
         })}

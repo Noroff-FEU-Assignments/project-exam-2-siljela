@@ -12,7 +12,7 @@ export const Reservations = () => {
   const [error, setError] = useState(null);
   const [auth, setAuth] = useContext(AuthContext);
   console.log(setAuth);
-  
+
   const history = useHistory();
   if (!auth) {
     history.push("/admin");
@@ -58,7 +58,7 @@ export const Reservations = () => {
               <p>Checkout date: {reservation.checkOutDate}</p>
               <p>
                 Guests:
-                {`${reservation.adults} Adult and ${reservation.children} Children`}
+                {`${reservation.noOfGuests} guests`}
               </p>
             </div>
           </div>

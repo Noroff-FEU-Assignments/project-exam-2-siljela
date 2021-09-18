@@ -1,12 +1,13 @@
-import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Heading from "../layout/Heading";
 import styles from "./Home.module.css";
 import IconItem from '../content/items/IconItem';
-import tent from "../../images/tent.png"
-import airballoon from "../../images/airballoon.png"
-import parasol from "../../images/parasoll.png"
+import tent from "../../images/tent.png";
+import airballoon from "../../images/airballoon.png";
+import parasol from "../../images/parasoll.png";
+import { Search } from '../content/Search';
 
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
                     B&amp;Bs, Motels &amp; Hotels" url="/browse" buttonContent="Browse properties">
                     <h2 className={styles.holidaze}>Holidaze</h2>
                 </Heading></div>
+                <Search />
                 <Row className={`${"text-center"} ${styles.iconSection}`}>
                     <Col sm className={styles.iconContainer}><IconItem url={tent} description="camping" content="Camping &rsaquo;"/></Col>
                     <Col sm className={styles.iconContainer}><IconItem url={airballoon} description="airballoon" content="Explore &rsaquo;"/></Col>

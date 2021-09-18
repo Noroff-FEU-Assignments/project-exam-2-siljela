@@ -18,8 +18,7 @@ const schema = yup.object().shape({
   checkOutDate: yup.date().default(function () {
     return new Date();
   }),
-  children: yup.string(),
-  adults: yup.string(),
+  noOfGuests: yup.string(),
 });
 
   export const Reserve = ({ properties }) => {
@@ -40,8 +39,7 @@ const schema = yup.object().shape({
         email: customerDetails.email,
         checkInDate: customerDetails.checkInDate,
         checkOutDate: customerDetails.checkOutDate,
-        adults: parseFloat(customerDetails.adults),
-        children: parseFloat(customerDetails.children),
+        noOfGuests: parseFloat(customerDetails.noOfGuests),
       });
     }
     postMessage();
@@ -106,16 +104,8 @@ const schema = yup.object().shape({
           </div>
           <div>
             <div>
-              <label>Adults</label>
-              <select name="adults" {...register("adults")}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </div>
-            <div>
-              <label>Children</label>
-              <select name="children" {...register("children")}>
-                <option value="0">0</option>
+              <label>Number of guests</label>
+              <select name="noOfGuests" {...register("noOfGuests")}>
                 <option value="1">1</option>
                 <option value="2">2</option>
               </select>

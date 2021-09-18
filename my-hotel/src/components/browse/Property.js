@@ -4,14 +4,14 @@ import { URL } from "../../constants/api";
 import Button from 'react-bootstrap/Button';
 import { Reserve } from "../reserve/Reserve";
 
-export const Properties = () => {
+export const Property = () => {
 
   const [properties, setProperties] = useState([]);
   const [load, setLoad] = useState(true);
   const [error, setError] = useState(null);
   const [displayReservationForm, setDisplayReservationForm] = useState(false);
   
-  const propertyUrl = `${URL}hotels`;
+  const propertyUrl = `${URL}properties`;
   let history = useHistory();
   const { id } = useParams();
 
@@ -19,7 +19,7 @@ export const Properties = () => {
     history.push("/");
   }
 
-  const detailUrl = propertyUrl + id;
+  const detailUrl = propertyUrl + "?id=" + id;
 
   useEffect(() => {
 

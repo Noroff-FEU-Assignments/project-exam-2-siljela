@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   type: yup.string(),
 });
 export const AddProperty = () => {
-  const addPropertyURL = URL + "hotels";
+  const addPropertyURL = URL + "properties";
   const history = useHistory();
   const [successMessage, setSuccessMessage] = useState("");
   const [auth] = useContext(AuthContext);
