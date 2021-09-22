@@ -7,8 +7,9 @@ function Heading(props) {
     return ( 
         <div className={`${styles.headline} ${styles.page}`}>
             {props.children}
-            <h1>{props.content}</h1>
-            <Button href={props.url} variant="primary">{props.buttonContent}</Button>{' '}
+            <h1 className={styles.title}>{props.content}</h1>
+            <h2 class={styles.secondTitle}>{props.secondTitle}</h2>
+            <Button href={props.url} variant="light" className={styles.btn}>{props.buttonContent}</Button>
         </div>
     );
 }

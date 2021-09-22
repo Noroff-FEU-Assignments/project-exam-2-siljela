@@ -1,0 +1,5 @@
+@media screen and (min-width: 600px) {
+  .loginContainer {
+    max-width: 515px;
+  }
+}

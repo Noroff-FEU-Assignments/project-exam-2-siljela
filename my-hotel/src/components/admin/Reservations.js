@@ -1,9 +1,9 @@
-// import "../../App.css";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { URL } from "../../constants/api";
 import { useHistory } from "react-router";
+
 const reservationsURL = URL + "reservations";
 
 export const Reservations = () => {
@@ -15,7 +15,7 @@ export const Reservations = () => {
 
   const history = useHistory();
   if (!auth) {
-    history.push("/admin");
+    history.push("/login");
   }
 
   useEffect(() => {
@@ -37,14 +37,14 @@ export const Reservations = () => {
   }, [auth]);
 
   if (loading) {
-    return <div>Your reservations are loading</div>;
+    return <div>Reservations are loading..</div>;
   }
   if (error) {
     return <div>An error has occured</div>;
   }
 
   if (reservations.length === 0) {
-    return <div className="empty-items">No incoming reservations yet</div>;
+    return <div>You currently have 0 reservations.</div>;
   }
   return (
     <>

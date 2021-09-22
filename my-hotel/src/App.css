@@ -8,10 +8,10 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background-image: url("./images/gondola.jpeg");
+  font-family: "Montserrat", sans-serif !important;
+  /* background-image: url("./images/gondola.jpeg");
   background-size: 310%;
-  background-position: top;
+  background-position: top; */
 }
 
 main {
@@ -22,4 +22,36 @@ main {
   margin: 0;
   padding: 0;
   max-width: none;
+}
+.btn-light {
+  background-color: var(--colour-primary) !important;
+  border-color: var(--colour-brown) !important;
+  color: white !important;
+}
+.btn-light:hover,
+.btn-light:active,
+.btn-light:visited {
+  filter: blur(0.1px) brightness(90%) !important;
+  border-color: var(--colour-brown) !important;
+}
+/* .navbar-dark,
+.navbar-toggler {
+  color: black !important;
+  border-color: white !important;
+} */
+/* .navbar-dark .navbar-nav .nav-link {
+  color: black !important;
+} */
+main .bg-dark {
+  background-color: transparent !important;
+}
+@media screen and (max-width: 992px) {
+  .navbar-dark,
+  .navbar-toggler {
+    color: black !important;
+    border-color: white !important;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: black !important;
+  }
 }

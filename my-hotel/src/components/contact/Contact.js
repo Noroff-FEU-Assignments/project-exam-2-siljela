@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { URL } from "../../constants/api";
 import Heading from "../layout/Heading";
+import wrapperstyle from '../layout/wrapperstyle.module.css';
 
 const schema = yup.object().shape({
   name: yup.string().required("Fill in your name"),
@@ -98,6 +99,7 @@ export const Contact = () => {
           </div>
         </div>
       </div>
+      <div className={`${wrapperstyle.wrapper} ${wrapperstyle.contactpage}`}></div>
     </div>
   );
 };

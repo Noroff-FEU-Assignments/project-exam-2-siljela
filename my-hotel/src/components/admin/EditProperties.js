@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { URL } from "../../constants/api";
 import { PropertyCard } from "../browse/PropertyCard";
@@ -9,11 +8,11 @@ export const EditProperties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [displayAddProperty, setdisplayAddProperty] = useState(false);
+  const [showProperty, setShowProperty] = useState(false);
 
   useEffect(() => {
     const propertiesURL = `${URL}properties`;
-    async function getProperties() {
+    async function propertiesInfo() {
       try {
         const response = await fetch(propertiesURL);
         if (response.ok) {
@@ -29,7 +28,7 @@ export const EditProperties = () => {
         setLoading(false);
       }
     }
-    getProperties();
+    propertiesInfo();
   }, []);
 
   if (loading) {
@@ -40,53 +39,58 @@ export const EditProperties = () => {
   }
 
   if (properties.length === 0) {
-    return <div className="empty-items">There are no properties.</div>;
+    return <div>There are no properties.</div>;
   }
 
-  const handleClick = () => {
+  const saveProperty = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
 
-  const openAddPropertyForm = () => {
-    setdisplayAddProperty(!displayAddProperty);
+  const openAdd = () => {
+    setShowProperty(!showProperty);
   };
   return (
     <div>
       <div>
-        <Button buttonStyle="btn--outline" onClick={openAddPropertyForm}>
+        <Button onClick={openAdd}>
           Add property
         </Button>
       </div>
       <div>
-        {displayAddProperty ? <AddProperty /> : ""}
+        {showProperty ? <AddProperty /> : ""}
       </div>
       <div>
         {properties.map((property) => {
           let {
-            img_url,
+            id,
             name,
             location,
+            img_url,
             description,
             price,
-            id,
+            pool,
+            cleaning,
+            parking, 
+            towels, 
+            breakfast,
           } = property;
-
-          if (property.img_url === null) {
-            img_url =
-              "https://res.cloudinary.com/hb5n5nkav/image/upload/v1621779159/placeholder_ibkqxi.png";
-          }
 
           return (
             <PropertyCard
               key={id}
               id={id}
-              img_url={img_url}
               name={name}
               location={location}
+              img_url={img_url}
               description={description}
               price={price}
-              onClick={() => handleClick()}
+              pool={pool}
+              cleaning={cleaning}
+              parking={parking}
+              towels={towels}
+              breakfast={breakfast}
+              onClick={() => saveProperty()}
               buttonLink={`properties/${id}`}
             />
           );

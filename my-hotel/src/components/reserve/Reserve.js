@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import axios from "axios";
 import { URL } from "../../constants/api";
+import Form from 'react-bootstrap/Form'
 
 const schema = yup.object().shape({
   name: yup.string().required("Enter your name"),
@@ -21,7 +22,7 @@ const schema = yup.object().shape({
   noOfGuests: yup.string(),
 });
 
-  export const Reserve = ({ properties }) => {
+  export const Reserve = () => {
   const {
     register,
     handleSubmit,
@@ -34,7 +35,7 @@ const schema = yup.object().shape({
 
   const onSubmit = (customerDetails) => {
     async function postMessage() {
-      await axios.post(URL + "/reservations", {
+      await axios.post(URL + "reservations", {
         name: customerDetails.name,
         email: customerDetails.email,
         checkInDate: customerDetails.checkInDate,
@@ -44,25 +45,32 @@ const schema = yup.object().shape({
     }
     postMessage();
     setSuccessMessage(
-      `Thank you ${customerDetails.name}. Your reservations has been confirmed.`
+      `Thank you. Your reservations has been confirmed.`
     );
   };
 
   return (
-    <div>
-      <div>
-        <header>
-          <p>
-            Excellent choice! Please fill in the form to complete your reservation
-            for <span>{properties.name}</span>
-          </p>
-        </header>
+    <Form
+    id="contactForm"
+    onSubmit={handleSubmit(onSubmit)}>
+      <Form.Group>
+        <Form.Control placeholder="Name" {...register("name")}>{errors.name && <span>{errors.name.message}</span>}</Form.Control>
+        <Form.Control type="email" placeholder="Email adress" {...register("email")}>{errors.email && <span>{errors.email.message}</span>}</Form.Control>
+        <Form.Control type="date" {...register("checkInDate")}>{errors.checkInDate && <span>{errors.checkInDate.message}</span>}</Form.Control>
+        <Form.Control type="date" {...register("checkOutDate")}>{errors.checkOutDate && <span>{errors.checkOutDate.message}</span>}</Form.Control>
+      </Form.Group>
+      <Form.Group>
+      <Form.Control as="select" name="noOfGuests" {...register("noOfGuests")}>
+        <option>Number of guests</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </Form.Control>
 
-        <form
-          id="contactForm"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div>
+      </Form.Group>
+        
+          {/* <div>
             <div>
               <label>Full Name</label>
               <input
@@ -110,15 +118,11 @@ const schema = yup.object().shape({
                 <option value="2">2</option>
               </select>
             </div>
-          </div>
-          <p>
-            *Please recheck evrything before submitting the form. We wish you a
-            pleasant stay in our hotel.
-          </p>
+          </div> */}
+          
           <p>{successMessage}</p>
-          <Button>Confirm reservation</Button>
-        </form>
-      </div>
-    </div>
+          <Button variant="primary" type="submit">Submit reservation</Button>
+
+    </Form>
   );
 };

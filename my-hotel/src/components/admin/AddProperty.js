@@ -11,7 +11,7 @@ import AuthContext from "../context/AuthContext";
 const schema = yup.object().shape({
   name: yup.string().required("Please enter property name"),
   location: yup.string().required("Please enter property"),
-
+  img_url: yup.string().required("Please enter an image-url"),
   description: yup
     .string()
     .required("please add some description")
@@ -21,36 +21,46 @@ const schema = yup.object().shape({
     .required("please add price per night")
     .positive()
     .integer(),
-  type: yup.string(),
+  pool: yup.string(),
+  cleaning: yup.string(),
+  parking: yup.string(),
+  towels: yup.string(),
+  breakfast: yup.string(),
 });
 export const AddProperty = () => {
+  
   const addPropertyURL = URL + "properties";
   const history = useHistory();
   const [successMessage, setSuccessMessage] = useState("");
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
-    history.push("/admin");
+    history.push("/login");
   }
   const {
     register,
-    handleSubmit,
+    saving,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (info) => {
-    console.log(info);
-    async function postMessage() {
+  const onSave = (propertyDetails) => {
+    console.log(propertyDetails);
+    async function addProperty() {
       await axios.post(
         addPropertyURL,
         {
-          name: info.name,
-          location: info.location,
-          description: info.description,
-          Type: info.type,
-          price: parseFloat(info.price),
+          name: propertyDetails.name,
+          location: propertyDetails.location,
+          img_url: propertyDetails.img_url,
+          description: propertyDetails.description,
+          price: parseFloat(propertyDetails.price),
+          pool: propertyDetails.pool,
+          cleaning: propertyDetails.cleaning,
+          parking: propertyDetails.parking,
+          towels: propertyDetails.towels,
+          breakfast: propertyDetails.breakfast,
         },
         {
           headers: {
@@ -59,7 +69,7 @@ export const AddProperty = () => {
         }
       );
     }
-    postMessage();
+    addProperty();
     setSuccessMessage("Property added.");
   };
 
@@ -67,7 +77,7 @@ export const AddProperty = () => {
     <div>
       <form
         id="contactForm"
-        onSubmit={handleSubmit(onSubmit)}
+        onSave={saving(onSave)}
       >
         <div>
           <div>
@@ -88,8 +98,15 @@ export const AddProperty = () => {
             />
             {errors.location && <span>{errors.location.message}</span>}
           </div>
-        </div>
-        <div>
+          <div>
+            <label>Image URL</label>
+            <input
+              type="text"
+              {...register("img_url")}
+              placeholder="Image url"
+            />
+            {errors.img_url && <span>{errors.img_url.message}</span>}
+          </div>
           <div>
             <label>Description</label>
             <textarea
@@ -99,19 +116,44 @@ export const AddProperty = () => {
             {errors.description && <span>{errors.description.message}</span>}
           </div>
           <div>
-            <label>Type of property</label>
-            <select name="type" {...register("type")}>
-              <option value="property">Property</option>
-              <option value="guesthouse">GuestHouse</option>
-              <option value="bandb">B&B</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <div>
             <label>Price</label>
             <input type="number" {...register("price")} />
             {errors.price && <span>{errors.price.message}</span>}
+          </div>
+          <div>
+            <label>Pool</label>
+            <select name="type" {...register("pool")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Cleaning</label>
+            <select name="type" {...register("cleaning")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Parking</label>
+            <select name="type" {...register("parking")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Towels</label>
+            <select name="type" {...register("towels")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Breakfast</label>
+            <select name="type" {...register("breakfast")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
           </div>
         </div>
         <p>

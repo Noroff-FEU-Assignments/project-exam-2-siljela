@@ -2,5 +2,26 @@
   max-width: 100px;
 }
 .resNavbar {
+  display: block;
   background-color: white;
+  /* max-width: 300px; */
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+@media screen and (min-width: 992px) {
+  .resNavbar {
+    background-color: transparent !important;
+    max-width: 300px;
+  }
+  .logo {
+    max-width: 200px;
+  }
+}
+.navigation {
+  z-index: 150;
+}
+.btn {
+  text-transform: uppercase;
+  background-color: var(--colour-primary);
 }

@@ -1,0 +1,6 @@
+.breadLink > a {
+  color: var(--colour-primary);
+}
+.breadLink > a:hover {
+  filter: brightness(110%);
+}

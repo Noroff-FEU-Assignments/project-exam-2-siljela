@@ -1,27 +1,41 @@
 import React from "react";
-import { HotelCardItem } from "./HotelCardItem";
+import { PropertyCardContent } from "./PropertyCardContent";
+import Col from 'react-bootstrap/Col';
+import styles from './PropertyCard.module.css';
 
 export const PropertyCard = ({
-    img_url,
+    id,
     name,
     location,
+    img_url,
     description,
     price,
-    id,
+    pool,
+    cleaning,
+    parking, 
+    towels, 
+    breakfast,
     onClick,
     buttonLink,
 }) => {
   return (
-    <HotelCardItem
-    id={id}
-    img_url={img_url}
-    name={name}
-    location={location}
-    description={description}
-    price={price}
-    onClick={onClick}
-    buttonLink={buttonLink}
-  />
+      <Col className={styles.propertyCard}>
+        <PropertyCardContent
+        id={id}
+        name={name}
+        location={location}
+        img_url={img_url}
+        description={description}
+        price={price}
+        pool={pool}
+        cleaning={cleaning}
+        parking={parking}
+        towels={towels}
+        breakfast={breakfast}
+        onClick={onClick}
+        buttonLink={buttonLink}
+        />
+    </Col>
   );
 };
 

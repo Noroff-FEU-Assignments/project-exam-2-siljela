@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import logo from "../../images/logo.png";
 import styles from "./Navigation.module.css";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 
 export const Navigation = () => {
 	const [auth, setAuth] = useContext(AuthContext);
@@ -42,35 +42,32 @@ export const Navigation = () => {
 	window.addEventListener("resize", showButton);
 
 	return (
-            <Navbar collapseOnSelect expand="lg">
-                <Container>
-				{/* <NavLink to="/" exact > */}
-					<Navbar.Brand>
-						<Link to="/"><img src={logo} alt="logo" className={styles.logo}/></Link>
-					</Navbar.Brand>
-				{/* </NavLink> */}
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className={styles.resNavbar}/>
-				<Navbar.Collapse id="responsive-navbar-nav" className="resNavbar">
+        <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" className={styles.navigation}>
+            <Container>
+				<Navbar.Brand>
+					<Link to="/"><img src={logo} alt="logo" className={styles.logo}/></Link>
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" className={styles.navToggle}/>
+				<Navbar.Collapse id="responsive-navbar-nav" className={`"resNavbar" ${styles.resNavbar}`}>
 					<Nav className="me-auto">
 						<Nav.Link href="/" exact className="nav-link">
 							Home
 						</Nav.Link>
-                        <Nav.Link href="/browse" className="nav-link">
+						<Nav.Link href="/browse" className="nav-link">
 							Browse Properties
 						</Nav.Link>
 						<Nav.Link href="/contact" className="nav-link">
 							Contact
 						</Nav.Link>
-					</Nav>
-                    <Nav>
-                        <Nav.Link href="/reserve" className="nav-link">Reserve</Nav.Link>
-                        <NavDropdown title="Social Media" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="link">Facebook &rsaquo; </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="link">Instagram &rsaquo;</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="link">Youtube &rsaquo;</NavDropdown.Item>
-                        </NavDropdown>
+					
+						<Nav.Link href="/reserve" className="nav-link">Reserve</Nav.Link>
+						<NavDropdown title="Social Media" id="collasible-nav-dropdown">
+							<NavDropdown.Item href="link">Facebook &rsaquo; </NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item href="link">Instagram &rsaquo;</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item href="link">Youtube &rsaquo;</NavDropdown.Item>
+						</NavDropdown>
 						{auth ? (
 							<>
 								<Nav.Link href="/admin" className="nav-link">
@@ -82,13 +79,13 @@ export const Navigation = () => {
 							</>
 							) : (
 								<Nav.Link href="/login" className="nav-link">
-									<Button>Log in</Button>
+									<Button variant="light" className={styles.btn}>Log in</Button>
 								</Nav.Link>
 							)}
                     </Nav>
 				</Navbar.Collapse>
             </Container>
-			</Navbar>
+		</Navbar>
 				
 	);
 }

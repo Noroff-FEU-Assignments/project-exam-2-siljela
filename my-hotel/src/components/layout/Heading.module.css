@@ -1,6 +1,17 @@
 .headline {
   color: var(--colour-primary);
-  /* margin: 50% 20%; */
-  text-transform: uppercase;
   color: white;
+  /* z-index: 100; */
+}
+.title {
+  font-family: "Dancing Script", cursive;
+  font-size: 72px;
+}
+.secondTitle {
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.btn {
+  text-transform: uppercase;
+  background-color: var(--colour-primary);
 }

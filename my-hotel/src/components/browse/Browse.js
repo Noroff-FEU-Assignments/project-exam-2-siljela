@@ -2,16 +2,24 @@ import { useState, useEffect } from "react";
 import { URL } from "../../constants/api";
 import { PropertyCard } from "./PropertyCard";
 import Heading from '../layout/Heading';
+import BreadcrumbNavigation from '../content/items/BreadcrumbNavigation';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import styles from './Browse.module.css';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import wrapperstyle from '../layout/wrapperstyle.module.css';
 
 export const Browse = () => {
 
 	const [properties, setProperties] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [load, setLoad] = useState(true);
 	const [error, setError] = useState(null);
 	const [filteredProperties, setFilteredProperties] = useState([]);
 
 	useEffect(function () {
 		const propertyData = `${URL}properties`;
+
 		async function fetchData() {
 			try {
 				const response = await fetch(propertyData);
@@ -28,13 +36,13 @@ export const Browse = () => {
 			} catch (error) {
 				setError(error.toString());
 			} finally {
-				setLoading(false);
+				setLoad(false);
 			}
 		}
 		fetchData();
 	}, []);
 
-	if (loading) {
+	if (load) {
 		return <div>Properties are loading..</div>;
 	}
 
@@ -56,45 +64,51 @@ export const Browse = () => {
 	};
 
 return (
-    <div>
-        <Heading />
-      <div>
-          <p>Search for properties</p>
-          <input
-            type="text"
-            onChange={(e) => handleData(e)}
-            placeholder="Search property name here.."
-          />
-      </div>
-      <div>
-        {filteredProperties.map((property) => {
-          let {
-			img_url,
-			name,
-			location,
-			description,
-			price,
-			id,
-          } = property;
-        //   if (property.img_url === null) {
-        //     img_url =
-        //       "https://res.cloudinary.com/hb5n5nkav/image/upload/v1621779159/placeholder_ibkqxi.png";
-        //   }
-          return (
-            <PropertyCard
-              key={id}
-              id={id}
-              img_url={img_url}
-              name={name}
-              location={location}
-              description={description}
-              price={price}
-              onClick={() => handleClick()}
-              buttonLink={`/properties/?id=${property.id}`}
-            />
-          );
-        })}
-      </div>
-    </div>
+    <>
+            <Container>
+                <BreadcrumbNavigation currentPage="Properties" currentPageTitle="Browse Properties"/>
+                <Heading content="Properties" url="/" buttonContent="Back to homepage"/>
+                <InputGroup className={styles.search}>
+                    <InputGroup.Text><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
+                    <FormControl onChange={(e) => handleData(e)} placeholder="Search property name" aria-label="Search property name" aria-describedby="inputGroup-sizing-sm" />
+                </InputGroup>
+                <Row>
+                    {filteredProperties.map((property) => {
+                    let {
+                        id,
+                        name,
+                        location,
+                        img_url,
+                        description,
+                        price,
+                        pool,
+                        cleaning,
+                        parking, 
+                        towels, 
+                        breakfast,
+                    } = property;
+                    return (
+                        <PropertyCard 
+                            key={id}
+                            id={id}
+                            name={name}
+                            location={location}
+                            img_url={img_url}
+                            description={description}
+                            price={price}
+                            pool={pool}
+                            cleaning={cleaning}
+                            parking={parking}
+                            towels={towels}
+                            breakfast={breakfast}
+                            onClick={() => handleClick()}
+                            buttonLink={`properties/${id}`}
+                        />
+                    );
+                    })}
+                </Row>
+            </Container>
+            <div className={`${wrapperstyle.wrapper} ${wrapperstyle.browsepage}`}></div>
+    </>
   );
 };

@@ -3,17 +3,12 @@ import styles from './IconItem.module.css';
 
 function IconItem(props) {
 
-    // let extraClass = null;
-
-    //     if(props.variant === "four") {
-    //         extraClass = fourStyles.four;
-    //     }
-
-
     return (
         <div>
-            <img src={props.url} alt={props.description} className={styles.iconImage}></img>
-            <h2>{props.content}</h2>
+            <a href={props.url} className={styles.iconItem}>
+                <img src={props.imgUrl} alt={props.description} className={styles.iconImage}></img>
+                <h2>{props.content}</h2>
+            </a>
         </div>
     )
 }

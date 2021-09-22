@@ -8,7 +8,7 @@ import { Contact } from "./components/contact/Contact";
 import { Browse } from "./components/browse/Browse";
 import { LogIn } from "./components/admin/LogIn";
 import { Admin } from "./components/admin/Admin";
-import { Property } from "./components/browse/Property";
+import { Properties } from "./components/browse/Properties";
 import { AuthProvider } from "./components/context/AuthContext";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
             <Navigation />
             <Switch>
 					    <Route path="/" exact component={Home} />
-              <Route path="/properties" component={Property} />
+              <Route path="/properties/:id" component={Properties} />
               <Route path="/reserve" component={Reserve} />
 					    <Route path="/contact" component={Contact} />
               <Route path="/browse" component={Browse} />
