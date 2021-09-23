@@ -1,10 +1,13 @@
 .card {
   background-color: rgba(255, 255, 255, 0.8) !important;
   border: none !important;
+
+  padding: 20px;
 }
 @media screen and (min-width: 550px) {
   .card {
     max-width: 550px;
-    margin: 0 auto;
+    margin: 200px auto !important;
+    padding: 50px;
   }
 }

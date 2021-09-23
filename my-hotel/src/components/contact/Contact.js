@@ -6,7 +6,11 @@ import { useState } from "react";
 import axios from "axios";
 import { URL } from "../../constants/api";
 import Heading from "../layout/Heading";
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container'
 import wrapperstyle from '../layout/wrapperstyle.module.css';
+import BreadcrumbNavigation from '../content/items/BreadcrumbNavigation';
+import styles from './Contact.module.css';
 
 const schema = yup.object().shape({
   name: yup.string().required("Fill in your name"),
@@ -45,61 +49,55 @@ export const Contact = () => {
     setSuccessMsg("Your inquiry is sent. You can expect a response within 7 working days.");
   };
   return (
-    <div>
-    <Heading content="Contact" />
-      <div>
-        <div>
+    <Container>
+      <BreadcrumbNavigation currentPage="Contact" currentPageTitle="Contact us"/>
+      <Heading content="Contact" buttonContent="Back to homepage" url="/"/>
+        <div className={styles.formArea}>
           <div>
+            <p>Some text</p>
             <div>
-              <p>Some text</p>
               <div>
-                <div>
-                  +00 00 00 00 00
-                </div>
-              </div>
-              <div>
-                <div>
-                  Email
-                </div>
-                <div>
-                  contact@holidaze.co
-                </div>
-              </div>
-              <div>
-                <div>
-                  Address
-                </div>
-                <div>
-                  Address
-                </div>
+                +00 00 00 00 00
               </div>
             </div>
-            <form
-              id="contactForm"
-              onSubmit={handleSubmit(onSubmit)}
-            >
+            <div>
               <div>
-                <label>Name</label>
-                <input type="text" {...register("name")} />
-                {errors.name && <span>{errors.name.message}</span>}
+                Email
               </div>
               <div>
-                <label>Email</label>
-                <input type="email" {...register("email")} />
-                {errors.email && <span>{errors.email.message}</span>}
+                contact@holidaze.co
+              </div>
+            </div>
+            <div>
+              <div>
+                Address
               </div>
               <div>
-                <label>Message</label>
-                <textarea {...register("message")} />
-                {errors.message && <span>{errors.message.message}</span>}
+                Address
               </div>
-              <p>{successMsg}</p>
-              <button>Send</button>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className={`${wrapperstyle.wrapper} ${wrapperstyle.contactpage}`}></div>
-    </div>
+          <Form
+            id="contactForm"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+          <Form.Group className="mb-3">
+              <Form.Control placeholder="First name" {...register("name")}/>
+              {errors.name && <span>{errors.name.message}</span>}
+          </Form.Group>
+          <Form.Group>
+            <Form.Control type="email" placeholder="name@example.com" {...register("email")}/>
+            {errors.email && <span>{errors.email.message}</span>}
+          </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Example textarea</Form.Label>
+              <Form.Control as="textarea" rows={3} {...register("message")}/>
+            </Form.Group>
+            <p>{successMsg}</p>
+            <button>Send</button>
+          </Form>
+          </div>
+        <div className={`${wrapperstyle.wrapper} ${wrapperstyle.contactpage}`}></div>
+    </Container>
   );
 };

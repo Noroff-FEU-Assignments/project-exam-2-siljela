@@ -6,6 +6,7 @@
 .title {
   font-family: "Dancing Script", cursive;
   font-size: 72px;
+  text-shadow: 2px 2px var(--colour-primary);
 }
 .secondTitle {
   text-transform: uppercase;

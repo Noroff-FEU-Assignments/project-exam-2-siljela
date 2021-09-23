@@ -39,9 +39,6 @@ export const Home = () => {
                             <div className={`${styles.mountain} ${styles.image}`}></div>
                             <a href="test">City-stay in Portugal &rsaquo;</a>
                         </Col>
-                        {/* <Col md className={`${styles.tram} ${styles.imageContainer}`}><a href="test">Mountain-view in Spain &rsaquo;</a></Col>
-                        <Col md className={`${styles.beach} ${styles.imageContainer}`}><a href="test">white-sanded stay in France &rsaquo;</a></Col>
-                        <Col md className={`${styles.mountain} ${styles.imageContainer}`}><a href="test">City-stay in Portugal &rsaquo;</a></Col> */}
                     </Row>
                     <Row className={`${"text-center"} ${styles.mallorca}`}>
                         <a href="/browse" className={styles.mallorcaText}>

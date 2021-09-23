@@ -6,6 +6,13 @@
   color: white;
   padding: 50px;
 }
+.footer a {
+  text-decoration: none;
+}
+.footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
 ul {
   padding: 0;
 }

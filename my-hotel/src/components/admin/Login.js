@@ -11,6 +11,7 @@ import Heading from '../layout/Heading';
 import Container from 'react-bootstrap/Container'
 import styles from './Login.module.css';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
+// import Button from 'react-bootstrap/Button'
 
 const AUTH = "auth/local";
 const url = URL + AUTH;
@@ -94,37 +95,10 @@ const schema = yup.object().shape({
             {errors.password && <span>{errors.password.message}</span>}
           </Form.Text>
         </Form.Group>
-        <button>{submitting ? "logging in" : "Login"}</button>
+        {/* <Button variant="light">{submitting ? "logging in" : "Login"}</Button> */}
+        <button variant="light">{submitting ? "logging in" : "Login"}</button>
         </fieldset>
       </Form>
-      {/* <form
-        id="contactForm"
-        onSubmit={handleSubmit(onSubmit)}>
-        <h2>Title</h2>
-        <p>{loginError}</p>
-        <fieldset disabled={submitting} style={{ border: "none" }}>
-          <div>
-            <label>Username</label>
-            <input
-              type="text"
-              {...register("username")}
-              placeholder="Enter your username."
-            />
-            {errors.username && <span>{errors.username.message}</span>}
-          </div> */}
-          {/* <div className="form-control">
-            <label>Password</label>
-            <input
-              type="password"
-              {...register("password")}
-              placeholder="Enter your password."
-            />
-            {errors.password && <span>{errors.password.message}</span>}
-          </div> */}
-{/* 
-          <button>{submitting ? "logging in" : "Login"}</button>
-        </fieldset>
-      </form> */}
       <div className={`${wrapperstyle.wrapper} ${wrapperstyle.loginpage}`}></div>
     </Container>
   );

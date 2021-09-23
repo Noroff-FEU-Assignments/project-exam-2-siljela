@@ -1,5 +1,12 @@
+.loginContainer {
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+}
 @media screen and (min-width: 600px) {
   .loginContainer {
-    max-width: 515px;
+    max-width: 515px !important;
   }
 }

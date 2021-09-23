@@ -48,6 +48,10 @@
   color: black;
   text-decoration: none;
 }
+.mallorcaText:hover {
+  color: black;
+  background-color: white;
+}
 .iconSection {
   background: white;
   padding-top: 50px;

@@ -1,0 +1,7 @@
+.formArea {
+  background-color: var(--colour-secondary);
+  margin: 20px auto;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 700px !important;
+}

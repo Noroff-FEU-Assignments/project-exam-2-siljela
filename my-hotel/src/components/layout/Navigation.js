@@ -60,21 +60,21 @@ export const Navigation = () => {
 							Contact
 						</Nav.Link>
 					
-						<Nav.Link href="/reserve" className="nav-link">Reserve</Nav.Link>
+						{/* <Nav.Link href="/reserve" className="nav-link">Reserve</Nav.Link> */}
 						<NavDropdown title="Social Media" id="collasible-nav-dropdown">
-							<NavDropdown.Item href="link">Facebook &rsaquo; </NavDropdown.Item>
+							<NavDropdown.Item href="link"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook &rsaquo; </NavDropdown.Item>
 							<NavDropdown.Divider />
-							<NavDropdown.Item href="link">Instagram &rsaquo;</NavDropdown.Item>
+							<NavDropdown.Item href="link"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram &rsaquo;</NavDropdown.Item>
 							<NavDropdown.Divider />
-							<NavDropdown.Item href="link">Youtube &rsaquo;</NavDropdown.Item>
+							<NavDropdown.Item href="link"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube &rsaquo;</NavDropdown.Item>
 						</NavDropdown>
 						{auth ? (
 							<>
 								<Nav.Link href="/admin" className="nav-link">
-									<Button>Admin</Button>
+									<Button variant="light">Admin</Button>
 								</Nav.Link>
 								<Nav.Link href="/login" className="nav-link">
-									<Button onClick={logout}>Log out</Button>
+									<Button variant="light" onClick={logout}>Log out</Button>
 								</Nav.Link>
 							</>
 							) : (
