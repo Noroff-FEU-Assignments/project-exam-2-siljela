@@ -11,11 +11,6 @@ export const PropertyCardContent = ({
     img_url,
     description,
     price,
-    // pool,
-    // cleaning,
-    // parking, 
-    // towels, 
-    // breakfast,
     onClick,
     buttonLink,
 }) => {
@@ -25,10 +20,10 @@ export const PropertyCardContent = ({
                 <Card className={styles.card} style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={img_url} />
                     <Card.Body>
-                        <Card.Title>{name}</Card.Title>
-                        <Card.Text>{price}</Card.Text>
-                        <Card.Text>{description}</Card.Text>
-                        <Card.Text>{location}</Card.Text>
+                        <Card.Title><i class="fa fa-bed" aria-hidden="true"></i>{name}</Card.Title>
+                        <Card.Text><i class="fa fa-money" aria-hidden="true"></i>{price}</Card.Text>
+                        <Card.Text><i class="fa fa-info-circle" aria-hidden="true"></i>{description}</Card.Text>
+                        <Card.Text><i class="fa fa-location-arrow" aria-hidden="true"></i>{location}</Card.Text>
                         {/* <Button variant="primary"><a href={`/hotel/?id=${hotel.id}`}>Go somewhere</a></Button> */}
                         <Link to={buttonLink}>
                             <Button onClick={onClick}>

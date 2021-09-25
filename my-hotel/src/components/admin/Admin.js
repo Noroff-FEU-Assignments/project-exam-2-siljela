@@ -9,6 +9,7 @@ import Heading  from '../layout/Heading';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import styles from './Admin.module.css';
 
   export const Admin = () => {
   const [auth] = useContext(AuthContext);
@@ -34,7 +35,7 @@ import Col from 'react-bootstrap/Col';
   };
   return (
     <>
-      <Container>
+      <Container className={styles.adminpanel}>
         <Heading content="Administration page" url="/" buttonContent="Back to homepage"/>
         <Row className="justify-content-md-center">
           <Col xs lg="2">

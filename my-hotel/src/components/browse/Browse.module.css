@@ -1,5 +1,4 @@
-.search,
-.propertyCard {
-  max-width: 275px;
-  margin: 20px auto;
+.search {
+  margin: 20px 0;
+  max-width: 300px;
 }

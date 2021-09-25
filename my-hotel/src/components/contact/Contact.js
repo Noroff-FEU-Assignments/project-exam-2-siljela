@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,19 +35,19 @@ export const Contact = () => {
 
   const [successMsg, setSuccessMsg] = useState("");
 
-  const onSubmit = (info) => {
+  const onSubmit = (customerDetails) => {
     async function postMsg() {
       await axios.post(URL + "messages", {
-        name: info.name,
-        email: info.email,
-        message: info.message,
+        name: customerDetails.name,
+        email: customerDetails.email,
+        message: customerDetails.message,
       });
     }
 
     postMsg();
-
     setSuccessMsg("Your inquiry is sent. You can expect a response within 7 working days.");
   };
+  
   return (
     <Container>
       <BreadcrumbNavigation currentPage="Contact" currentPageTitle="Contact us"/>

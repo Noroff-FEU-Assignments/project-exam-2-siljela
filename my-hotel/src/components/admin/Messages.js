@@ -1,21 +1,17 @@
-// import "../../App.css";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { URL } from "../../constants/api";
+import Spinner from 'react-bootstrap/Spinner';
 
 const messageURL = URL + "messages";
 
 export const Messages = () => {
-  const [loading, setloading] = useState(true);
+  const [load, setload] = useState(true);
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState(null);
-  const [displayMessage, setdisplayMessage] = useState(false);
   const [auth] = useContext(AuthContext);
 
-  const showMessageContent = () => {
-    setdisplayMessage(!displayMessage);
-  };
   useEffect(() => {
     if (!auth) {
       return;
@@ -32,17 +28,21 @@ export const Messages = () => {
       } catch (error) {
         setError(error.toString());
       } finally {
-        setloading(false);
+        setload(false);
       }
     }
     getMessages();
   }, [auth]);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (load) {
+    return <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+    </div>;
   }
   if (error) {
-    return <div>An error has occured</div>;
+    return <div>We were unable to load messages at this moment. Return to <a href="/admin">admin-page</a>.</div>;
   }
   if (messages.length === 0) {
     return <div>You currently have no messages.</div>;
@@ -52,31 +52,12 @@ export const Messages = () => {
       {messages.map((message) => {
         return (
           <div key={message.id}>
-            <div onClick={showMessageContent}>
               <div>
-                <p>From {message.message}</p>
-                <p>Name: {message.name}</p>
+                <p>From {message.email}</p>
                 <p>Date: {message.created_at}</p>
+                <p>Name: {message.name}</p>
+                <p>Message: {message.message}</p>
               </div>
-              <div className="message-head-col">
-                <i
-                  className={
-                    displayMessage
-                      ? "fas fa-minus-circle"
-                      : "fas fa-plus-circle"
-                  }
-                ></i>
-              </div>
-            </div>
-            <div>
-              <p
-                className={`message-content ${
-                  displayMessage ? "extra-padding" : ""
-                }`}
-              >
-                {displayMessage ? `Message: ${message.message}` : ""}
-              </p>
-            </div>
           </div>
         );
       })}

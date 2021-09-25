@@ -10,6 +10,7 @@ import Heading from '../layout/Heading';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
 import styles from './Properties.module.css';
 import BreadcrumbNavThree from '../content/items/BreadcrumbNavThree';
+import Spinner from 'react-bootstrap/Spinner'
 
 export const Properties = () => {
 
@@ -56,10 +57,14 @@ export const Properties = () => {
   }, [detailUrl]);
 
   if (load) {
-    return <div>Properties are coming loading..</div>;
+    return <div>
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+    </div>;
   }
   if (error) {
-    return <div>The properties are currently unavailble. We apologise for the inconvenience.</div>;
+    return <div>The properties are currently unavailble. We apologise for the inconvenience. Please return to <a href="/">Homepage</a>.</div>;
   }
 
   const receivingReservation = () => {
@@ -76,10 +81,10 @@ export const Properties = () => {
             <div key={properties.id}>
               <Heading content={properties.name} url="/browse" buttonContent="Back to property overview"/>
               <Card.Text>
-                Location: {properties.location}
+              <i class="fa fa-location-arrow" aria-hidden="true"></i> {properties.location}
               </Card.Text>
-              <Card.Text>{properties.description}</Card.Text>
-              <Card.Text>{properties.price}</Card.Text>
+              <Card.Text><i class="fa fa-info-circle" aria-hidden="true"></i> {properties.description}</Card.Text>
+              <Card.Text><i class="fa fa-money" aria-hidden="true"></i> {properties.price}</Card.Text>
               <Container>
                 <Column title="Pool" result={properties.pool ? 'Yes' : 'No'}/>
                 <Column title="Cleaning" result={properties.cleaning ? 'Yes' : 'No'}/>
@@ -88,7 +93,7 @@ export const Properties = () => {
                 <Column title="Breakfast" result={properties.breakfast ? 'Yes' : 'No'}/>
               </Container>
               <Button
-                size="lg" variant="primary" 
+                size="lg" variant="light" 
                 onClick={() => receivingReservation()}
               >
                 Reserve now
@@ -101,7 +106,7 @@ export const Properties = () => {
             {displayReservationForm ? <Reserve properties={properties} /> : ""}
           </div>
       </Card>
-      <img src={properties.img_url} className={wrapperstyle.wrapper}/>
+      <img src={properties.img_url} className={wrapperstyle.wrapper} alt="background"/>
     </Container>
   );
 };

@@ -9,6 +9,7 @@ import styles from './Browse.module.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
+import Spinner from 'react-bootstrap/Spinner'
 
 export const Browse = () => {
 
@@ -43,7 +44,11 @@ export const Browse = () => {
 	}, []);
 
 	if (load) {
-		return <div>Properties are loading..</div>;
+		return <div>
+            <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>;
 	}
 
 	if (error) {
