@@ -22,8 +22,9 @@
   text-decoration: none;
   color: white;
 }
-.image:hover {
-  filter: blur(0.1px) brightness(90%);
+.imageContainer > a:hover {
+  color: white;
+  font-size: 30px;
 }
 .village {
   background-image: url("../../images/town.jpeg");
@@ -37,20 +38,22 @@
 .tram {
   background-image: url("../../images/tram-2.jpeg");
 }
-.mallorca {
+.hordaland {
   background-image: url("../../images/apartment-building.jpeg");
   background-size: 300%;
-  padding: 80px 60px;
+  padding: 20%;
 }
-.mallorcaText {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 20px;
+.hordalandText {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
   color: black;
   text-decoration: none;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
-.mallorcaText:hover {
+.hordalandText:hover {
   color: black;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .iconSection {
   background: white;
@@ -59,3 +62,19 @@
 .iconContainer {
   margin: 50px 0;
 }
+@media only screen and (min-width: 400px) {
+  .hordaland {
+    padding: 20%;
+    background-size: 150%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .hordalandText {
+    border-radius: 50px;
+  }
+}
+/* .row {
+  margin: 0 !important;
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0 !important;
+} */

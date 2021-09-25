@@ -53,45 +53,27 @@ export const Contact = () => {
       <BreadcrumbNavigation currentPage="Contact" currentPageTitle="Contact us"/>
       <Heading content="Contact" buttonContent="Back to homepage" url="/"/>
         <div className={styles.formArea}>
-          <div>
-            <p>Some text</p>
-            <div>
-              <div>
-                +00 00 00 00 00
-              </div>
-            </div>
-            <div>
-              <div>
-                Email
-              </div>
-              <div>
-                contact@holidaze.co
-              </div>
-            </div>
-            <div>
-              <div>
-                Address
-              </div>
-              <div>
-                Address
-              </div>
-            </div>
+          <div className={styles.contactDetails}>
+            <h3>Contact details</h3>
+            <p>Adress: Address Street 22, 00000 CA</p>
+            <p>Phone number: +00 00 00 00 00</p>
+            <p>Fill in the form below if you wish to contact us by email.</p>
           </div>
           <Form
             id="contactForm"
             onSubmit={handleSubmit(onSubmit)}
           >
           <Form.Group className="mb-3">
-              <Form.Control placeholder="First name" {...register("name")}/>
+              <Form.Control placeholder="Your name" {...register("name")}/>
               {errors.name && <span>{errors.name.message}</span>}
           </Form.Group>
           <Form.Group>
-            <Form.Control type="email" placeholder="name@example.com" {...register("email")}/>
+            <Form.Control type="email" placeholder="Email address" {...register("email")}/>
             {errors.email && <span>{errors.email.message}</span>}
           </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} {...register("message")}/>
+              <Form.Control as="textarea" placeholder="Request/question" rows={3} {...register("message")}/>
+              {errors.message && <span>{errors.message.message}</span>}
             </Form.Group>
             <p>{successMsg}</p>
             <button>Send</button>

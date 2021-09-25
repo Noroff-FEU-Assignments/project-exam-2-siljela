@@ -1,7 +1,9 @@
 .headline {
   color: var(--colour-primary);
   color: white;
+  text-align: center;
   /* z-index: 100; */
+  margin-bottom: 20px;
 }
 .title {
   font-family: "Dancing Script", cursive;

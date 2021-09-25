@@ -72,7 +72,7 @@ return (
     <>
             <Container>
                 <BreadcrumbNavigation currentPage="Properties" currentPageTitle="Browse Properties"/>
-                <Heading content="Properties" url="/" buttonContent="Back to homepage"/>
+                <Heading content="Properties" url="/" buttonContent="Back to homepage" />
                 <InputGroup className={styles.search}>
                     <InputGroup.Text><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
                     <FormControl onChange={(e) => handleData(e)} placeholder="Search property name" aria-label="Search property name" aria-describedby="inputGroup-sizing-sm" />

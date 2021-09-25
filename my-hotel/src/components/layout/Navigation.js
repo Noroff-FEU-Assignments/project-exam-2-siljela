@@ -10,23 +10,15 @@ import Button from 'react-bootstrap/Button';
 
 export const Navigation = () => {
 	const [auth, setAuth] = useContext(AuthContext);
-	// const [click, setclick] = useState(false);
 	const [button, setButton] = useState(true);
 	console.log(button);
 	
-	// const handleClick = () => setclick(!click);
 	const history = useHistory();
 
 	const logout = () => {
 	setAuth(null);
 	history.push("/login");
 	};
-
-//   const closeMobileMenu = () => {
-//     setclick(false);
-//     document.body.scrollTop = 0;
-//     document.documentElement.scrollTop = 0;
-//   };
 
 	const showButton = () => {
 	if (window.innerWidth <= 1000) {
@@ -89,5 +81,3 @@ export const Navigation = () => {
 				
 	);
 }
-
-// export default Navigation;

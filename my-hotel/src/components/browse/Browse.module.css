@@ -1,4 +1,7 @@
 .search {
-  margin: 20px 0;
+  margin: 20px auto;
   max-width: 300px;
+}
+.browseHeading {
+  margin: 0 auto !important;
 }

@@ -1,0 +1,6 @@
+.subTitle {
+  color: black;
+}
+.subTitle:hover {
+  font-size: 28px;
+}

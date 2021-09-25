@@ -26,7 +26,7 @@ export const PropertyCardContent = ({
                         <Card.Text><i class="fa fa-location-arrow" aria-hidden="true"></i>{location}</Card.Text>
                         {/* <Button variant="primary"><a href={`/hotel/?id=${hotel.id}`}>Go somewhere</a></Button> */}
                         <Link to={buttonLink}>
-                            <Button onClick={onClick}>
+                            <Button onClick={onClick} variant="light">
                             Book this property
                             </Button>
                         </Link>

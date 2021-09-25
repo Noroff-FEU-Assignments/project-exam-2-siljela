@@ -11,7 +11,6 @@ import Heading from '../layout/Heading';
 import Container from 'react-bootstrap/Container'
 import styles from './Login.module.css';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
-// import Button from 'react-bootstrap/Button'
 
 const AUTH = "auth/local";
 const url = URL + AUTH;

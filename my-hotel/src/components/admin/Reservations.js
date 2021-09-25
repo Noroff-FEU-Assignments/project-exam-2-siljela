@@ -3,6 +3,10 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { URL } from "../../constants/api";
 import Spinner from 'react-bootstrap/Spinner';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row'; 
+import Col from 'react-bootstrap/Col';
+import styles from './Messages.module.css';
 
 const reservationsURL = URL + "reservations";
 
@@ -52,13 +56,71 @@ export const Reservations = () => {
     <>
       {reservations.map((reservation) => {
         return (
-          <div key={reservation.id}>
-                <p>From {reservation.email}</p>
-                <p>Name: {reservation.name}</p>
-                <p>Checkin date: {reservation.checkInDate}</p>
-                <p>Checkout date: {reservation.checkOutDate}</p>
-                <p>Guests: {reservation.noOfGuests}</p>
-          </div>
+
+          <Form key={reservation.id} className={styles.messageBox} >
+            
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Name:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.name} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Email:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.email} />
+              </Col>
+            </Form.Group>
+            
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Checkin date:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.checkInDate} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Checkout date:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.checkOutDate} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Number of guests:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.noOfGuests} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Sent:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={reservation.created_at} />
+              </Col>
+            </Form.Group>
+          </Form>
+
+          // <div key={reservation.id}>
+          //       <p>From {reservation.email}</p>
+          //       <p>Name: {reservation.name}</p>
+          //       <p>Checkin date: {reservation.checkInDate}</p>
+          //       <p>Checkout date: {reservation.checkOutDate}</p>
+          //       <p>Guests: {reservation.noOfGuests}</p>
+          // </div>
         );
       })}
     </>

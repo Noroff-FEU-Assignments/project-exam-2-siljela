@@ -3,6 +3,10 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { URL } from "../../constants/api";
 import Spinner from 'react-bootstrap/Spinner';
+import styles from './Messages.module.css';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row'; 
+import Col from 'react-bootstrap/Col';
 
 const messageURL = URL + "messages";
 
@@ -51,14 +55,44 @@ export const Messages = () => {
     <>
       {messages.map((message) => {
         return (
-          <div key={message.id}>
-              <div>
-                <p>From {message.email}</p>
-                <p>Date: {message.created_at}</p>
-                <p>Name: {message.name}</p>
-                <p>Message: {message.message}</p>
-              </div>
-          </div>
+          <Form key={message.id} className={styles.messageBox} >
+            
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Name:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={message.name} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Email:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={message.email} />
+              </Col>
+            </Form.Group>
+            
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Message:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} as="textarea" plaintext readOnly defaultValue={message.message} style={{ height: '100px' }}/>
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              <Form.Label column sm="2">
+                Sent:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control className={styles.guestInput} plaintext readOnly defaultValue={message.created_at} />
+              </Col>
+            </Form.Group>
+          </Form>
         );
       })}
     </>

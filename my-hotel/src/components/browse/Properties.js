@@ -7,7 +7,7 @@ import Column from '../content/items/Column';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Heading from '../layout/Heading';
-import wrapperstyle from '../layout/wrapperstyle.module.css';
+// import wrapperstyle from '../layout/wrapperstyle.module.css';
 import styles from './Properties.module.css';
 import BreadcrumbNavThree from '../content/items/BreadcrumbNavThree';
 import Spinner from 'react-bootstrap/Spinner'
@@ -74,24 +74,30 @@ export const Properties = () => {
 
   return (
     <Container>
-      <BreadcrumbNavThree secondLink="browse" secondLinkText="Browse Properties" thirdLinkText={properties.name} />
+      <BreadcrumbNavThree secondLink="../browse" secondLinkText="Browse Properties" thirdLinkText={properties.name} />
       <Card className={styles.card}>
         {/* <Card.Img variant="top" src={properties.img_url} alt={properties.name}/> */}
           <Card.Body>
             <div key={properties.id}>
-              <Heading content={properties.name} url="/browse" buttonContent="Back to property overview"/>
+              <Heading content={properties.name} url="../browse" buttonContent="Back to property overview"/>
               <Card.Text>
               <i class="fa fa-location-arrow" aria-hidden="true"></i> {properties.location}
               </Card.Text>
               <Card.Text><i class="fa fa-info-circle" aria-hidden="true"></i> {properties.description}</Card.Text>
-              <Card.Text><i class="fa fa-money" aria-hidden="true"></i> {properties.price}</Card.Text>
               <Container>
+                <hr/>
                 <Column title="Pool" result={properties.pool ? 'Yes' : 'No'}/>
+                <hr/>
                 <Column title="Cleaning" result={properties.cleaning ? 'Yes' : 'No'}/>
+                <hr/>
                 <Column title="Parking" result={properties.parking ? 'Yes' : 'No'}/>
+                <hr/>
                 <Column title="Towels" result={properties.towels ? 'Yes' : 'No'}/>
+                <hr/>
                 <Column title="Breakfast" result={properties.breakfast ? 'Yes' : 'No'}/>
+                <hr/>
               </Container>
+              <Card.Text><p className={styles.price}><i class="fa fa-eur" aria-hidden="true"></i> {properties.price}</p></Card.Text>
               <Button
                 size="lg" variant="light" 
                 onClick={() => receivingReservation()}
@@ -106,7 +112,7 @@ export const Properties = () => {
             {displayReservationForm ? <Reserve properties={properties} /> : ""}
           </div>
       </Card>
-      <img src={properties.img_url} className={wrapperstyle.wrapper} alt="background"/>
+      <img src={properties.img_url} className={styles.wrapper} alt="background"/>
     </Container>
   );
 };
