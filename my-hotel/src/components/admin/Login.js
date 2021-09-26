@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 });
 
   export const LogIn = () => {
-  document.title = "Log in to Holidaze Admin Panel";
+  document.title = "Login to Holidaze Admin Panel";
   const {
     register,
     handleSubmit,

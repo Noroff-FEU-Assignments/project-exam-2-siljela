@@ -46,7 +46,7 @@ export const Contact = () => {
     }
 
     postMsg();
-    setSuccessMsg("Your inquiry is sent. You can expect a response within 7 working days.");
+    setSuccessMsg("Your message has been sent. You will hear from us shortly.");
   };
   
   return (
