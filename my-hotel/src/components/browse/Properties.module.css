@@ -4,6 +4,16 @@
   padding: 20px;
   text-align: center;
 }
+.price {
+  font-size: 24px;
+}
+.wrapper {
+  position: fixed;
+  left: 0;
+  z-index: -1;
+  height: 150%;
+  bottom: 0;
+}
 @media screen and (min-width: 550px) {
   .card {
     max-width: 550px;
@@ -11,13 +21,16 @@
     padding: 50px;
   }
 }
-.wrapper {
-  position: fixed;
-  bottom: -50%;
-  left: 0;
-  z-index: -1;
-  width: 100%;
+@media screen and (min-width: 750px) {
+  .wrapper {
+    height: auto;
+    width: 100%;
+  }
 }
-.price {
-  font-size: 24px;
+.share {
+  color: black;
+  text-decoration: none;
+}
+.share:hover {
+  text-decoration: underline;
 }

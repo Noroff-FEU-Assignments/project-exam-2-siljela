@@ -7,10 +7,11 @@ import axios from "axios";
 import { URL } from "../../constants/api";
 import AuthContext from "../context/AuthContext";
 import Form from 'react-bootstrap/Form';
-import Heading from '../layout/Heading';
+import Heading from '../content/Heading';
 import Container from 'react-bootstrap/Container'
 import styles from './Login.module.css';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
+import BreadcrumbNavigation from '../content/BreadcrumbNavigation';
 
 const AUTH = "auth/local";
 const url = URL + AUTH;
@@ -27,7 +28,7 @@ const schema = yup.object().shape({
 });
 
   export const LogIn = () => {
-
+  document.title = "Log in to Holidaze Admin Panel";
   const {
     register,
     handleSubmit,
@@ -64,6 +65,8 @@ const schema = yup.object().shape({
   }
 
   return (
+    <Container>
+    <BreadcrumbNavigation currentPage="Login" currentPageTitle="Login"/>
     <Container className={styles.loginContainer}>
       <Heading content="Log in" url="/" buttonContent="Back to homepage"/>
       <Form
@@ -94,11 +97,11 @@ const schema = yup.object().shape({
             {errors.password && <span>{errors.password.message}</span>}
           </Form.Text>
         </Form.Group>
-        {/* <Button variant="light">{submitting ? "logging in" : "Login"}</Button> */}
         <button variant="light">{submitting ? "logging in" : "Login"}</button>
         </fieldset>
       </Form>
       <div className={`${wrapperstyle.wrapper} ${wrapperstyle.loginpage}`}></div>
+    </Container>
     </Container>
   );
 };

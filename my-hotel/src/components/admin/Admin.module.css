@@ -13,3 +13,11 @@
 .logout {
   text-align: center;
 }
+.addSection a {
+  text-decoration: none;
+  color: black;
+}
+.addSection a:hover {
+  text-decoration: underline;
+  color: black;
+}

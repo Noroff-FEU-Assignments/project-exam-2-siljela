@@ -5,11 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import axios from "axios";
 import { URL } from "../../constants/api";
-import Heading from "../layout/Heading";
+import Heading from "../content/Heading";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import wrapperstyle from '../layout/wrapperstyle.module.css';
-import BreadcrumbNavigation from '../content/items/BreadcrumbNavigation';
+import BreadcrumbNavigation from '../content/BreadcrumbNavigation';
 import styles from './Contact.module.css';
 
 const schema = yup.object().shape({
@@ -25,6 +25,7 @@ const schema = yup.object().shape({
 });
 
 export const Contact = () => {
+  document.title = "Contact Holidaze";
   const {
     register,
     handleSubmit,

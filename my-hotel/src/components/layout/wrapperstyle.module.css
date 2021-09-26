@@ -11,15 +11,16 @@
   background-attachment: fixed;
 }
 .homepage {
-  background-image: url("../../images/gondola.jpeg");
+  background-image: url("../../images/hordaland.jpeg");
 }
 .browsepage {
   background-image: url("../../images/canoe.jpeg");
 }
-.propertiespage {
+.addproperty {
+  background-image: url("../../images/paddling.jpeg");
 }
 .adminpage {
-  background-image: url("../../images/tiles.jpeg");
+  background-image: url("../../images/bergen-by.jpeg");
 }
 .contactpage {
   background-image: url("../../images/sign.jpeg");

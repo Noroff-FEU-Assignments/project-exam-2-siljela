@@ -23,6 +23,7 @@ const schema = yup.object().shape({
 });
 
   export const Reserve = () => {
+  
   const {
     register,
     handleSubmit,
@@ -60,10 +61,10 @@ const schema = yup.object().shape({
         <Form.Control type="email" placeholder="Email adress" {...register("email")}/>{errors.email && <span>{errors.email.message}</span>}
       </Form.Group>
       <Form.Group>
-        <Form.Control type="date" {...register("checkInDate")}/>{errors.checkInDate && <span>{errors.checkInDate.message}</span>}
+        <Form.Control type="date" {...register("checkInDate")}/>{errors.checkInDate && <span>Select a check-in date</span>}
       </Form.Group>
       <Form.Group>
-        <Form.Control type="date" {...register("checkOutDate")}/>{errors.checkOutDate && <span>{errors.checkOutDate.message}</span>}
+        <Form.Control type="date" {...register("checkOutDate")}/>{errors.checkOutDate && <span>Select a check-out date</span>}
       </Form.Group>
       <Form.Group>
         <Form.Control as="select" name="noOfGuests" {...register("noOfGuests")}>
@@ -73,6 +74,7 @@ const schema = yup.object().shape({
           <option value="3">3</option>
           <option value="4">4</option>
         </Form.Control>
+        {errors.noOfGuests && <span>Select number of guests</span>}
       </Form.Group>
           <p>{successMsg}</p>
           <button>Send</button>

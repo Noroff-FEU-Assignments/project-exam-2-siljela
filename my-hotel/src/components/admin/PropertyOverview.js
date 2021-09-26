@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import { URL } from "../../constants/api";
 import { PropertyCard } from "../browse/PropertyCard";
-// import { AddProperty } from "./AddProperty";
 import "../browse/Browse";
 import Spinner from 'react-bootstrap/Spinner';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import styles from '../browse/Browse.module.css';
+// import Button from 'react-bootstrap/Button';
 
-export const EditProperties = () => {
+export const PropertyOverview = () => {
   const [properties, setProperties] = useState([]);
   const [load, setLoad] = useState(true);
   const [error, setError] = useState(null);
   const [filteredProperties, setFilteredProperties] = useState([]);
-
-  // const [showProperty, setShowProperty] = useState(false);
 
   useEffect(() => {
     const propertiesURL = `${URL}properties`;
@@ -53,16 +51,6 @@ export const EditProperties = () => {
     return <div>There are no properties.</div>;
   }
 
-  const saveProperty = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-
-  // const openAdd = () => {
-  //   setShowProperty(!showProperty);
-  // };
-
-
   const handleData = (event) => {
     const searchInput = event.target.value.trim().toLowerCase();
     const searchResult = properties.filter((property) =>
@@ -73,14 +61,7 @@ export const EditProperties = () => {
 
   return (
     <div>
-      {/* <div>
-        <Button onClick={openAdd}>
-          Add property
-        </Button>
-      </div> */}
-      {/* <div>
-        {showProperty ? <AddProperty /> : ""}
-      </div> */}
+      {/* <a href="/addproperty"><Button variant="light">Add property</Button></a> */}
       <InputGroup className={styles.search}>
         <InputGroup.Text><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
         <FormControl onChange={(e) => handleData(e)} placeholder="Search property name" aria-label="Search property name" aria-describedby="inputGroup-sizing-sm" />
@@ -115,7 +96,6 @@ export const EditProperties = () => {
               parking={parking}
               towels={towels}
               breakfast={breakfast}
-              onClick={() => saveProperty()}
               buttonLink={`properties/${id}`}
             />
           );

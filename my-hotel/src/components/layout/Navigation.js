@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link, useHistory } from "react-router-dom";
-// import { BrowserRouter as NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import logo from "../../images/logo.png";
 import styles from "./Navigation.module.css";
@@ -52,7 +51,6 @@ export const Navigation = () => {
 							Contact
 						</Nav.Link>
 					
-						{/* <Nav.Link href="/reserve" className="nav-link">Reserve</Nav.Link> */}
 						<NavDropdown title="Social Media" id="collasible-nav-dropdown">
 							<NavDropdown.Item href="link"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook &rsaquo; </NavDropdown.Item>
 							<NavDropdown.Divider />

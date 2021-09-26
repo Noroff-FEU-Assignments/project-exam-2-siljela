@@ -1,37 +1,26 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Navigation } from "./components/layout/Navigation";
 import Footer from './components/layout/Footer';
-import { Home } from "./components/home/Home";
-import { Reserve } from "./components/reserve/Reserve";
-import { Contact } from "./components/contact/Contact";
-import { Browse } from "./components/browse/Browse";
-import { LogIn } from "./components/admin/LogIn";
-import { Admin } from "./components/admin/Admin";
-import { Properties } from "./components/browse/Properties";
 import { AuthProvider } from "./components/context/AuthContext";
+import Switcher from './components/layout/Switch';
 
 function App() {
 
   return (
       <AuthProvider>
-      <main>
-          <Router>
+        <a href="#main" className="goToMain">Go to main content</a>
+        <Router>
+          <header>
             <Navigation />
-            <Switch>
-					    <Route path="/" exact component={Home} />
-              <Route path="/properties/:id" component={Properties} />
-              <Route path="/reserve" component={Reserve} />
-					    <Route path="/contact" component={Contact} />
-              <Route path="/browse" component={Browse} />
-              <Route path="/login" component={LogIn} />
-					    <Route path="/admin" component={Admin} />
-				    </Switch>
-          </Router>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+          </header>
+          <main id="main">
+            <Switcher />
+          </main>
+        </Router>
+        <footer>
+          <Footer />
+        </footer>
       </AuthProvider>
   );
 }

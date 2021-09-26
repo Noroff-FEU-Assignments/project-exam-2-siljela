@@ -53,11 +53,6 @@ export const SearchBar = () => {
     
       return (
         <>
-          {/* <input
-            type="text"
-            placeholder="Search property"
-            onChange={(e) => searching(e)}
-          /> */}
         <InputGroup className={styles.search}>
             <InputGroup.Text><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
             <FormControl onChange={(e) => searching(e)} placeholder="Search property name" aria-label="Search property name" aria-describedby="inputGroup-sizing-sm" />
@@ -79,8 +74,9 @@ export const SearchBar = () => {
               } = property;
               
               return (
-                <Link to={`/properties/${id}`}>
-                  <li
+                <>
+                <Link to={`/properties/${id}`} className={styles.searchResult}>
+                  <li 
                     key={id}
                     id={id}
                     name={name}
@@ -97,6 +93,7 @@ export const SearchBar = () => {
                     {property.name}
                   </li>
                 </Link>
+                </>
               );
             })}
           </ul>

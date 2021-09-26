@@ -31,15 +31,7 @@ main {
   filter: blur(0.1px) brightness(90%) !important;
   border-color: var(--colour-brown) !important;
 }
-/* .navbar-dark,
-.navbar-toggler {
-  color: black !important;
-  border-color: white !important;
-} */
-/* .navbar-dark .navbar-nav .nav-link {
-  color: black !important;
-} */
-main .bg-dark {
+header .bg-dark {
   background-color: transparent !important;
 }
 @media screen and (max-width: 992px) {
@@ -51,4 +43,20 @@ main .bg-dark {
   .navbar-dark .navbar-nav .nav-link {
     color: black !important;
   }
+}
+.goToMain {
+  visibility: hidden;
+}
+button {
+  padding: 10px 20px;
+  background-color: var(--colour-primary);
+  color: white;
+  border: 1px solid #f8f9fa;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  max-width: 200px;
+  margin: 0 auto;
+}
+button:hover {
+  filter: brightness(90%);
 }

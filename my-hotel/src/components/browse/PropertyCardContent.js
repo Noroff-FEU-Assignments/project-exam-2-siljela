@@ -11,7 +11,6 @@ export const PropertyCardContent = ({
     img_url,
     description,
     price,
-    onClick,
     buttonLink,
 }) => {
 
@@ -24,9 +23,8 @@ export const PropertyCardContent = ({
                         <Card.Text><i class="fa fa-money" aria-hidden="true"></i>{price}</Card.Text>
                         <Card.Text><i class="fa fa-info-circle" aria-hidden="true"></i>{description}</Card.Text>
                         <Card.Text><i class="fa fa-location-arrow" aria-hidden="true"></i>{location}</Card.Text>
-                        {/* <Button variant="primary"><a href={`/hotel/?id=${hotel.id}`}>Go somewhere</a></Button> */}
                         <Link to={buttonLink}>
-                            <Button onClick={onClick} variant="light">
+                            <Button variant="light">
                             Book this property
                             </Button>
                         </Link>

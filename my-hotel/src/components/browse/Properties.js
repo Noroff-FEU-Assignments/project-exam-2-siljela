@@ -3,13 +3,12 @@ import { useParams, useHistory } from "react-router-dom";
 import { URL } from "../../constants/api";
 import { Reserve } from "../reserve/Reserve";
 import Button from 'react-bootstrap/Button';
-import Column from '../content/items/Column';
+import Column from '../content/Column';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import Heading from '../layout/Heading';
-// import wrapperstyle from '../layout/wrapperstyle.module.css';
+import Heading from '../content/Heading';
 import styles from './Properties.module.css';
-import BreadcrumbNavThree from '../content/items/BreadcrumbNavThree';
+import BreadcrumbNavThree from '../content/BreadcrumbNavThree';
 import Spinner from 'react-bootstrap/Spinner'
 
 export const Properties = () => {
@@ -72,11 +71,12 @@ export const Properties = () => {
     document.location.href = "#reservationForm";
   };
 
+  document.title = `${properties.name}`;
+
   return (
     <Container>
       <BreadcrumbNavThree secondLink="../browse" secondLinkText="Browse Properties" thirdLinkText={properties.name} />
       <Card className={styles.card}>
-        {/* <Card.Img variant="top" src={properties.img_url} alt={properties.name}/> */}
           <Card.Body>
             <div key={properties.id}>
               <Heading content={properties.name} url="../browse" buttonContent="Back to property overview"/>
@@ -111,6 +111,7 @@ export const Properties = () => {
           <div>
             {displayReservationForm ? <Reserve properties={properties} /> : ""}
           </div>
+          <a href="facebook.com" className={styles.share}>Share on Facebook <i class="fa fa-share" aria-hidden="true"></i></a>
       </Card>
       <img src={properties.img_url} className={styles.wrapper} alt="background"/>
     </Container>

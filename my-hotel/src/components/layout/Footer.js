@@ -1,9 +1,9 @@
 import React from 'react'
-import SoMe from '../content/items/SoMe';
-import Text from '../content/items/Text';
+import SoMe from '../content/SoMe';
+import Text from '../content/Text';
 import styles from './Footer.module.css';
-import FooterLink from '../content/items/FooterLink';
-import List from '../content/items/List';
+import FooterLink from '../content/FooterLink';
+import List from '../content/List';
 
 function FooterContent() {
     return (

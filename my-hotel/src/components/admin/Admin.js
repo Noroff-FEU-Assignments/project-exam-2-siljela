@@ -1,20 +1,23 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { Messages } from "./Messages";
 import { Reservations } from "./Reservations";
-import { EditProperties } from "./EditProperties";
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { PropertyResults } from '../browse/PropertyResults';
+import { Nav } from 'react-bootstrap';
 import wrapperstyle from '../layout/wrapperstyle.module.css';
-import Heading  from '../layout/Heading';
-import SubHeading from '../layout/SubHeading.js';
+import Heading  from '../content/Heading';
+import SubHeading from '../content/SubHeading.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './Admin.module.css';
 import Button from 'react-bootstrap/Button'
+import BreadcrumbNavigation from '../content/BreadcrumbNavigation';
+
 
   export const Admin = () => {
+  document.title = "Admin page";
 	const [auth, setAuth] = useContext(AuthContext);
   const [displayMsgs, setMsgs] = useState(false);
   const [displayReservations, setReservations] = useState(false);
@@ -41,12 +44,14 @@ import Button from 'react-bootstrap/Button'
   const toggleEdit = () => {
     setEdit(!displayEdit);
   };
+
   return (
     <>
       <Container className={styles.adminpanel}>
+      <BreadcrumbNavigation currentPage="Admin" currentPageTitle="Admin"/>
         <Heading content="Admin" url="/" buttonContent="Back to homepage"/>
         <Row className="justify-content-md-center">
-          <Col lg lg="2" className={styles.adminsections}>
+          <Col lg="2" className={styles.adminsections}>
             <div onClick={toggleMsgs}>
               <SubHeading content="Inbox"/><i class="fa fa-sort-desc" aria-hidden="true"></i>
             </div>
@@ -54,7 +59,7 @@ import Button from 'react-bootstrap/Button'
               {displayMsgs ? <Messages /> : ""}
             </div>
           </Col>
-          <Col lg lg="2" className={styles.adminsections}>
+          <Col lg="2" className={styles.adminsections}>
             <div onClick={toggleReservations}>
               <SubHeading content="Reservations"/><i class="fa fa-sort-desc" aria-hidden="true"></i>
             </div>
@@ -62,13 +67,16 @@ import Button from 'react-bootstrap/Button'
               {displayReservations ? <Reservations /> : ""}
             </div>
           </Col>
-          <Col lg lg="2" className={styles.adminsections}>
+          <Col lg="2" className={styles.adminsections}>
             <div onClick={toggleEdit}>
-              <SubHeading content="Edit properties"/><i class="fa fa-sort-desc" aria-hidden="true"></i>
+              <SubHeading content="Overview properties"/><i class="fa fa-sort-desc" aria-hidden="true"></i>
             </div>
             <div>
-              {displayEdit ? <EditProperties /> : ""}
+              {displayEdit ? <PropertyResults /> : ""}
             </div>
+          </Col>
+          <Col lg="2" className={`${styles.adminsections} ${styles.addSection}`}>
+            <a href="/addproperty"><SubHeading content="Add property"/><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
           </Col>
         </Row>
         <div className={styles.logout}>

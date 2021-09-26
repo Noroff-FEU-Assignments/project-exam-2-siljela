@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,31 +6,39 @@ import { URL } from "../../constants/api";
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row'; 
+import Col from 'react-bootstrap/Col';
+import styles from './AddProperty.module.css';
+import Container from 'react-bootstrap/Container';
+import Heading  from '../content/Heading';
+import BreadcrumbNavigation from '../content/BreadcrumbNavigation';
+import wrapperstyle from '../layout/wrapperstyle.module.css';
 
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter property name"),
-  location: yup.string().required("Please enter property"),
-  img_url: yup.string().required("Please enter an image-url"),
+  name: yup.string().required("Enter property name"),
+  location: yup.string().required("Enter property location"),
+  img_url: yup.string().required("Enter an image-url"),
   description: yup
     .string()
-    .required("please add some description")
-    .min(5, "description should be at least 5 charecters"),
+    .required("Add a description")
+    .min(5, "Description must be minimum 5 charecters"),
   price: yup
     .number()
-    .required("please add price per night")
+    .required("Add price")
     .positive()
     .integer(),
-  pool: yup.string(),
-  cleaning: yup.string(),
-  parking: yup.string(),
-  towels: yup.string(),
-  breakfast: yup.string(),
+  pool: yup.boolean().required("Select yes or no"),
+  cleaning: yup.boolean().required("Select yes or no"),
+  parking: yup.boolean().required("Select yes or no"),
+  towels: yup.boolean().required("Select yes or no"),
+  breakfast: yup.boolean().required("Select yes or no"),
 });
 export const AddProperty = () => {
-  
-  const addPropertyURL = URL + "properties";
+  document.title = "Add property";
+  const addURL = URL + "properties";
   const history = useHistory();
-  const [successMessage, setSuccessMessage] = useState("");
+  const [confirmed, setConfirmed] = useState("");
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
@@ -39,17 +46,16 @@ export const AddProperty = () => {
   }
   const {
     register,
-    saving,
+    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSave = (propertyDetails) => {
-    console.log(propertyDetails);
+  const onSubmit = (propertyDetails) => {
     async function addProperty() {
       await axios.post(
-        addPropertyURL,
+        addURL,
         {
           name: propertyDetails.name,
           location: propertyDetails.location,
@@ -70,98 +76,116 @@ export const AddProperty = () => {
       );
     }
     addProperty();
-    setSuccessMessage("Property added.");
+    setConfirmed(`The property has been added.`);
   };
 
   return (
-    <div>
-      <form
-        id="contactForm"
-        onSave={saving(onSave)}
-      >
-        <div>
-          <div>
-            <label>Property Name</label>
-            <input
-              type="text"
-              {...register("name")}
-              placeholder="Name of the new property"
-            />
+    <>
+    <Container>
+      <BreadcrumbNavigation currentPage="AddProperty" currentPageTitle="Add Property"/>
+      <Heading content="Add Property" url="./admin" secondTitle="Fill in property details below" buttonContent="Back to admin overview"/>
+      <Form id="contactForm" className={styles.addForm} onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Property Name
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="text" placeholder="Name of new property" {...register("name")}/>
             {errors.name && <span>{errors.name.message}</span>}
-          </div>
-          <div>
-            <label>Location</label>
-            <input
-              type="text"
-              {...register("location")}
-              placeholder="Location of the property"
-            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Location
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="text" placeholder="Location of new property" {...register("location")}/>
             {errors.location && <span>{errors.location.message}</span>}
-          </div>
-          <div>
-            <label>Image URL</label>
-            <input
-              type="text"
-              {...register("img_url")}
-              placeholder="Image url"
-            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Image URL
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="text" placeholder="Image URL of new property" {...register("img_url")}/>
             {errors.img_url && <span>{errors.img_url.message}</span>}
-          </div>
-          <div>
-            <label>Description</label>
-            <textarea
-              {...register("description")}
-              placeholder="Description of the property"
-            ></textarea>
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Description
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="text" placeholder="Description of new property" {...register("description")}/>
             {errors.description && <span>{errors.description.message}</span>}
-          </div>
-          <div>
-            <label>Price</label>
-            <input type="number" {...register("price")} />
-            {errors.price && <span>{errors.price.message}</span>}
-          </div>
-          <div>
-            <label>Pool</label>
-            <select name="type" {...register("pool")}>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div>
-            <label>Cleaning</label>
-            <select name="type" {...register("cleaning")}>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div>
-            <label>Parking</label>
-            <select name="type" {...register("parking")}>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div>
-            <label>Towels</label>
-            <select name="type" {...register("towels")}>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div>
-            <label>Breakfast</label>
-            <select name="type" {...register("breakfast")}>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-        </div>
-        <p>
-          *Please recheck everything before submitting the form.
-        </p>
-        <p className="successMessage">{successMessage}</p>
-        <Button>Save</Button>
-      </form>
-    </div>
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Price
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="number" {...register("price")}/>
+            {errors.price && <span>Add a price</span>}
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Form.Select name="type" {...register("pool")}>
+            <option>Pool</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Form.Select>
+          {errors.pool && <span>Select yes or no</span>}
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Form.Select name="type" {...register("cleaning")}>
+            <option>Cleaning</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Form.Select>
+          {errors.cleaning && <span>Select yes or no</span>}
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Form.Select name="type" {...register("parking")}>
+            <option>Parking</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Form.Select>
+          {errors.parking && <span>Select yes or no</span>}
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Form.Select name="type" {...register("towels")}>
+            <option>Towels</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Form.Select>
+          {errors.towels && <span>Select yes or no</span>}
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3">
+          <Form.Select name="type" {...register("breakfast")}>
+            <option>Breakfast</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Form.Select>
+          {errors.breakfast && <span>Select yes or no</span>}
+        </Form.Group>
+
+        <p className="confirmed">{confirmed}</p>
+        <button>Save</button>
+        
+      </Form>
+    </Container>
+    <div className={`${wrapperstyle.wrapper} ${wrapperstyle.addproperty}`}></div>
+    </>
   );
 };

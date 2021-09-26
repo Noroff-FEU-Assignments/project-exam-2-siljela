@@ -1,3 +1,7 @@
+LOGIN DETAILS
+username: admin@admin.com
+password: admin123
+
 # Project Exam 2
 
 There are two options with this Project Exam.
@@ -9,9 +13,7 @@ To take the skills learned over the last two years and take on an extensive proj
 
 ## Brief
 
-For this assignment you have the choice between getting a real world client that you will manage and build a website for, or a case study to make a hotel booking website.
-
-Whatever project you choose, the final submission must have the following:
+The final submission must have the following:
 
 - A Gantt chart planning the project
 - A style guide
@@ -21,36 +23,6 @@ Whatever project you choose, the final submission must have the following:
 - You can use regular JS or TypeScript
 - Please use create-react-app or create-next-app to generate a skeleton project for yourself
 - A fully working website that fulfils the brief
-
-## Option 1: Real World Client
-
-Make a website or application for a real world client. The project should offer a significant enough scope to be able to show off your skills as a developer, and hopefully the project can form a central part of your portfolio for when you start applying for jobs.
-
-The process followed for the project will differ depending on the client and the requirements of their project.
-
-Note: The project has to have a big enough scope to show off the skills learned over your studies. An example of the level we’re expecting would be a website where administrators can add, update, remove products, and users can search, filter, and contact administrators. If you are unsure if your potential client’s brief is strong enough for the Project Exam 2, please message your tutors. Use of a JavaScript Framework is a requirement.
-
-### Recommended Process
-
-Week 1 to 3: Finding client, Planning and Design
-Week 4 to 6: Coding
-Week 7: Bug Fixing
-
-### Level 1 Process
-
-- Use your networks and connections to find a client that needs a website or application built.
-- Understand their requirements and come up with a functional specification for the project. You can write the functional specification using “System shall” statements. For example, “The system shall allow visitors to search for an article”
-- Create a Gantt chart for the project, planning out your deliverables for the client.
-- Make a design style guide and then take this style guide and create an Adobe XD prototype. Present to the client for feedback.
-- Develop the site ensuring you deliver all that is listed in your functional specification.
-- Test the website on various platforms and browsers. Ensure the site is bug-free and working before presenting to the client.
-- Go through a final round of changes before going live with the website.
-- Write a report on your process and decisions for the project. Please use the report template provided.
-
-### Submission
-
-End of week 3: Functional specification, Gantt chart, style guide, and Adobe XD prototype
-End of week 7: Report with link to website, and all files in a compressed ZIP
 
 ## Option 2: Hotel Booking Website
 
@@ -103,5 +75,3 @@ End of week 7: Report with link to website or a Github link and feedback from co
 ### Resources
 
 Report template included in the repo.
-
-https://fonts.google.com/specimen/Dancing+Script#about

@@ -113,14 +113,6 @@ export const Reservations = () => {
               </Col>
             </Form.Group>
           </Form>
-
-          // <div key={reservation.id}>
-          //       <p>From {reservation.email}</p>
-          //       <p>Name: {reservation.name}</p>
-          //       <p>Checkin date: {reservation.checkInDate}</p>
-          //       <p>Checkout date: {reservation.checkOutDate}</p>
-          //       <p>Guests: {reservation.noOfGuests}</p>
-          // </div>
         );
       })}
     </>

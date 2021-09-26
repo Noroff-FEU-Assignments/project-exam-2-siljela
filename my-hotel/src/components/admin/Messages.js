@@ -27,7 +27,6 @@ export const Messages = () => {
       };
       try {
         const response = await axios.get(messageURL, { headers });
-        console.log(response.data);
         setMessages(response.data);
       } catch (error) {
         setError(error.toString());
